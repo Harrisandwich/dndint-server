@@ -6,7 +6,10 @@ export default (server) => {
 
   io.on('connection', (socket) => {
     console.log('a user connected')
+    socket.on('command', (socket) => {
+      console.log('a command has been received')
+      io.emit('command-response', { good: 'yes ' })
+    })
   })
-
   return io
 }
