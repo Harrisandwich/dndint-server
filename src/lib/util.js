@@ -9,10 +9,12 @@
  *  }
  */
 export function toRes(res, status = 200) {
+  // eslint-disable-next-line
   return (err, thing) => {
     if (err) return res.status(500).send(err)
 
     if (thing && typeof thing.toObject === 'function') {
+      // eslint-disable-next-line
       thing = thing.toObject()
     }
     res.status(status).json(thing)

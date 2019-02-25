@@ -1,11 +1,12 @@
-const host = () => {
+const host = () => (
   // if file, send a socket message back that requests the campaign json
-  // the user doesn't need to be notified of this interaction, but we could put something like "retrieving campaign.."
-  return {
+  // the user doesn't need to be notified of this interaction,
+  // but we could put something like "retrieving campaign.."
+  {
     output: 'Command unavailable',
     type: 'error',
   }
-}
+)
 
 host.str = '/host'
 host.options = [{
@@ -16,6 +17,7 @@ host.options = [{
 }, {
   name: '-file',
   type: 'bool',
+  // eslint-disable-next-line
   desc: 'Load the campaign from local file. If true, -campaign MUST be a string containing the file path',
 }]
 // eslint-disable-next-line

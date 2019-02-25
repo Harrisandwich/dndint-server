@@ -21,6 +21,7 @@ app.use(bodyParser.json({ limit: config.bodyLimit }))
 initializeSocket(app.server)
 
 app.server.listen(process.env.PORT || config.port, () => {
+  // eslint-disable-next-line
   console.log(`Started on port ${app.server.address().port}`)
 })
 

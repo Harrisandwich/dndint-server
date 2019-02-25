@@ -1,14 +1,9 @@
-const join = () => {
-  /*
-    Things to keep in mind:
-    - What if player is already connected to this game as this character?
-
-  */
-  return {
+const join = () => (
+  {
     output: 'Command unavailable',
     type: 'error',
   }
-}
+)
 
 join.str = '/join'
 join.options = [{

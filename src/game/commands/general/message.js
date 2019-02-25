@@ -1,9 +1,9 @@
-const message = () => {
-  return {
+const message = () => (
+  {
     output: 'Command unavailable',
     type: 'error',
   }
-}
+)
 
 message.str = '/message'
 message.hidden = true // doesn't show up in /help
