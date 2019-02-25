@@ -13,6 +13,7 @@ module.exports = {
         "sourceType": "module"
     },
     rules: {
+      'no-plusplus': 'off',
       'no-console': ['error', {'allow': ['warn', 'error']}],
       'newline-per-chained-call': 'off',
       'linebreak-style': ['error', 'unix'],
