@@ -4,6 +4,10 @@ Getting Started
 ---------------
 
 ```sh
+# Clone the repo
+git clone https://github.com/Harrisandwich/dndint-server.git
+cd dndint-server
+
 # Install dependencies
 npm install
 
