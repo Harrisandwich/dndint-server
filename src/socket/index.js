@@ -14,6 +14,7 @@ export default (server) => {
       role: NONE,
       state: MENU,
     }
+    io.emit('set-appstate', { state: MENU })
     socket.on('command', (msg) => {
       const { command } = msg
       const user = users[socket.id]
