@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/Harrisandwich/dndint-server.svg?branch=master)](https://travis-ci.org/Harrisandwich/dndint-server)
 
+To interact with the server, you'll need the [client app](https://github.com/Harrisandwich/dndint-client)
+
 Getting Started
 ---------------
 
