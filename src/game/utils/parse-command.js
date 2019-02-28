@@ -7,7 +7,13 @@ export default ({ commandObj, user, socket }) => {
     ? category[commandObj.command] : commands.general[commandObj.command]
 
   if (command) {
-    return command({ commandObj, user, socket })
+    // checks if the command passed is valid for this command
+    // before running the command as a callback
+    return validateCommand(
+      command,
+      commandObj,
+      () => command({ commandObj, user, socket }),
+    )
   }
   return {
     output: 'Invalid command. Use "/help" to see available commands',

@@ -9,7 +9,12 @@ join.str = '/join'
 join.options = [{
   name: '-room',
   type: 'string',
-  desc: 'the room code for the game you want to join',
+  desc: 'The room code for the game you want to join',
+  required: true,
+}, {
+  name: '-as',
+  type: 'string',
+  desc: 'The name of the character file you wish to use',
   required: true,
 }]
 // eslint-disable-next-line
