@@ -11,4 +11,6 @@ Here's the basic process for contributing
 
 - When done, create a pull request for review and merge
 
+I've never done anything like this before, so things may change if this repo gets any attention
+
 
