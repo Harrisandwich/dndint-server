@@ -159,7 +159,7 @@ Gorg: I open the crate
 Narrator(dm): Gorg discovers a small heap of gold coins
 
 (DM only)
-DM$ /give -gold 50 -player 2
+DM$ /give -item gold -amt 50 -player 2
 
 (All)
 Gorg picked up 50 gold!
@@ -176,11 +176,28 @@ Billy - Intelligence 4
 Billy rolls a d20
 Billy rolled a 1
 
-Billy - 5
+Final Result: Intelligence 5
 
-Narrator: The mechanism looks like some sort of trap. If triggered, it could trap the party in the entrance chamber.
+Narrator: The mechanism looks like some sort of trap. If triggered, it could trap the party in the entrance chamber. It's not clear where the trigger is
 
+Gorg: I pick up the crate and place it under the door
 
+(dm only)
+DM: /roll -skill str -player 1
 
+(All)
+Strength check: Gorb
+
+Gorg - Strength 5
+Gorg rolls a d20
+Gorg rolled a 5
+
+Final Result: Strength 10
+
+Narrator: Gorg expertly hoists the crate onto his shoulders, making sure to lift with his knees. He places it underneath the door. *SNAP* The crate was placed on a trip wire that was afixed, ankle height, across the tunnel entrance.
+
+A loud click is heard from the mechanism as a large metal panel is released.
+
+The panel crashes into the the crate...and is stopped! The crate was strong enough to prevent the opening from being completely sealed. There is room enough under it to crawl through into the dark chamber beyond.
 ```
 
