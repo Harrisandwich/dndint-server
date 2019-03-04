@@ -1,0 +1,31 @@
+{
+  "name": "Test Campaign",
+  "description": "A test campaign",
+  "map": "cave-system",
+  "acts": [{
+    "introduction": "The party enters a cave",
+    "starting_location": "Cave Entrance",
+    "encounters": [{
+      "location": "Cave 1",
+      "enemies": [{
+        "url": "http://dnd5eapi.co/api/monsters/150",
+        "initial_pos": []
+      },{
+        "url": "http://dnd5eapi.co/api/monsters/150",
+        "initial_pos": []
+      },{
+        "url": "http://dnd5eapi.co/api/monsters/150",
+        "initial_pos": []
+      }]
+    }],
+    "npcs": [{
+      "name": "Prisoner",
+      "location": "Cave 1",
+      "pos": [0,0],
+      "race": "human",
+      "items": [],
+      "reveal_desc": "",
+      "dialog_intro": ""
+    }]
+  }]
+}
