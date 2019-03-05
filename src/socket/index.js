@@ -15,10 +15,9 @@ export default (server) => {
       state: MENU,
     }
     io.emit('set-appstate', { state: MENU })
-    socket.on('command', (msg) => {
-      const { command } = msg
+    socket.on('command', (payload) => {
       const user = users[socket.id]
-      io.emit('command-response', parseCommand({ commandObj: command, socket, user }))
+      io.emit('command-response', parseCommand({ payload, socket, user }))
     })
     socket.on('disconnect', () => {
       // if player

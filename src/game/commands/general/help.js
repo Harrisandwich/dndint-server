@@ -2,13 +2,13 @@ import commands from '../index'
 import { Output } from '../../utils/output'
 
 
-const help = ({ commandObj, user }) => {
+const help = ({ payload, user }) => {
   const resp = {}
 
   const output = new Output('\n\n')
 
-  if (commandObj.options.length > 0) {
-    const cmdNames = commandObj.options.find(op => op.option === 'cmd').values
+  if (payload.options.length > 0) {
+    const cmdNames = payload.options.find(op => op.option === 'cmd').values
     const category = {
       ...commands[user.state][user.role],
       ...commands.general,
@@ -60,7 +60,7 @@ const help = ({ commandObj, user }) => {
 
 help.str = '/help'
 help.options = [{
-  name: '-cmd',
+  name: 'cmd',
   type: '[strings]',
   desc: 'a list of names (space separated) of he commands you want help with',
   required: false,
