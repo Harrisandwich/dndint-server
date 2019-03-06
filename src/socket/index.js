@@ -7,9 +7,12 @@ import { parseCommand } from '../game/utils'
 export default (server) => {
   const io = SocketServer(server)
   const users = {}
+  const rooms = {}
   io.on('connection', (socket) => {
     users[socket.id] = {
       id: socket.id,
+      displayName: '',
+      character: {},
       room: '',
       role: NONE,
       state: MENU,
@@ -17,7 +20,14 @@ export default (server) => {
     io.emit('set-appstate', { state: MENU })
     socket.on('command', (payload) => {
       const user = users[socket.id]
-      io.emit('command-response', parseCommand({ payload, socket, user }))
+      parseCommand({
+        payload,
+        socket,
+        io,
+        users,
+        rooms,
+        user,
+      })
     })
     socket.on('disconnect', () => {
       // if player

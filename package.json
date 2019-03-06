@@ -37,6 +37,7 @@
     "cors": "^2.7.1",
     "express": "^4.13.3",
     "morgan": "^1.8.0",
+    "randomstring": "^1.1.5",
     "resource-router-middleware": "^0.6.0",
     "roll": "^1.2.0",
     "socket.io": "^2.2.0"

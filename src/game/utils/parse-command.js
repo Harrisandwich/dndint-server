@@ -1,8 +1,9 @@
-import { hasValidOptions } from '.'
+import hasValidOptions from './has-valid-options'
 import commands from '../commands'
 
 
-export default ({ payload, user, socket }) => {
+export default (props) => {
+  const { payload, user, io } = props
   const category = commands[user.state][user.role]
   const command = category && category[payload.command]
     ? category[payload.command] : commands.general[payload.command]
@@ -10,15 +11,10 @@ export default ({ payload, user, socket }) => {
   if (command) {
     const optionsValid = hasValidOptions(command, payload)
     if (optionsValid.valid) {
-      return command({ payload, user, socket })
+      command(props)
     }
-    return {
-      output: optionsValid.msg,
-      type: 'error',
-    }
-  }
-  return {
-    output: 'Invalid command. Use "/help" to see available commands',
-    type: 'error',
+    io.emit('error', { output: optionsValid.msg })
+  } else {
+    io.emit('error', { output: 'Invalid command. Use "/help" to see available commands' })
   }
 }

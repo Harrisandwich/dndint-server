@@ -2,7 +2,7 @@ import commands from '../index'
 import { Output } from '../../utils/output'
 
 
-const help = ({ payload, user }) => {
+const help = ({ payload, io, user }) => {
   const resp = {}
 
   const output = new Output('\n\n')
@@ -24,8 +24,8 @@ const help = ({ payload, user }) => {
       })
     })
     resp.output = output.str
-    resp.type = 'success'
-    return resp
+    io.emit('command-response', resp)
+    return true
   }
   // eslint-disable-next-line
   output.addLine('Use "/help -cmd [command]" on a command below to see more details and optional params')
@@ -54,8 +54,8 @@ const help = ({ payload, user }) => {
     }
   })
   resp.output = output.str
-  resp.type = 'success'
-  return resp
+  io.emit('command-response', resp)
+  return true
 }
 
 help.str = '/help'
