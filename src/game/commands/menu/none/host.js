@@ -1,4 +1,5 @@
 import randomstring from 'randomstring'
+import setAppstate from '../../../utils/set-appstate'
 import { LOBBY } from '../../../constants/states'
 import { DM } from '../../../constants/roles'
 
@@ -30,8 +31,7 @@ const host = ({ payload, socket, io, user, rooms }) => {
       user.displayName = displayName
       resp.output = `You have successully created room ${roomCode}`
       io.emit('command-response', resp)
-      io.emit('set-appstate', {
-        state: LOBBY,
+      setAppstate(LOBBY, io, {
         displayName,
         roomCode,
       })

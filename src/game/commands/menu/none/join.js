@@ -1,3 +1,4 @@
+import setAppstate from '../../../utils/set-appstate'
 import { LOBBY } from '../../../constants/states'
 import { PLAYER } from '../../../constants/roles'
 
@@ -13,8 +14,7 @@ const join = ({ payload, socket, io, user, rooms }) => {
       user.displayName = displayName
       resp.output = `You have successully joined room ${roomCode}`
       io.emit('command-response', resp)
-      io.emit('set-appstate', {
-        state: LOBBY,
+      setAppstate(LOBBY, io, {
         displayName,
         roomCode,
       })

@@ -2,6 +2,7 @@ import SocketServer from 'socket.io'
 import { NONE } from '../game/constants/roles'
 import { MENU } from '../game/constants/states'
 import { parseCommand } from '../game/utils'
+import setAppstate from '../game/utils/set-appstate'
 
 
 export default (server) => {
@@ -17,7 +18,7 @@ export default (server) => {
       role: NONE,
       state: MENU,
     }
-    io.emit('set-appstate', { state: MENU })
+    setAppstate(MENU, io)
     socket.on('command', (payload) => {
       const user = users[socket.id]
       parseCommand({

@@ -1,21 +1,19 @@
-import { LOBBY, PLAYING } from '../../constants/states'
-import { DM, PLAYER } from '../../constants/roles'
+import { PLAYING } from '../../constants/states'
+import { DM } from '../../constants/roles'
+
 
 const getDisplayName = (user) => {
-  let displayName = user.displayName
   if (user.state === PLAYING) {
     if (user.role === DM) {
-      displayName = 'Narrator'
-    } else {
-      displayName = user.character.name
+      return 'Narrator'
     }
+    return user.character.name
   }
-  return displayName
+  return user.displayName
 }
 
-const message = ({ payload, socket, io, user, rooms }) => {
-
-  const message = payload.options.find(o => o.option === 'text').values[0]
+const message = ({ payload, io, user }) => {
+  const message = payload.options.find(o => o.option === 'txt').values[0]
   const roomCode = user.room
   const displayName = getDisplayName(user)
 
