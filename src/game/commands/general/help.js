@@ -2,7 +2,7 @@ import commands from '../index'
 import { Output } from '../../utils/output'
 
 
-const help = ({ payload, io, user }) => {
+const help = ({ payload, socket, io, user }) => {
   const resp = {}
 
   const output = new Output('\n\n')
@@ -24,7 +24,7 @@ const help = ({ payload, io, user }) => {
       })
     })
     resp.output = output.str
-    io.emit('command-response', resp)
+    io.to(socket.id).emit('command-response', resp)
     return true
   }
   // eslint-disable-next-line
@@ -54,7 +54,7 @@ const help = ({ payload, io, user }) => {
     }
   })
   resp.output = output.str
-  io.emit('command-response', resp)
+  io.to(socket.id).emit('command-response', resp)
   return true
 }
 

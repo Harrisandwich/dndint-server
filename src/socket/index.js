@@ -18,7 +18,7 @@ export default (server) => {
       role: NONE,
       state: MENU,
     }
-    setAppstate(MENU, io)
+    setAppstate(MENU, socket, io)
     socket.on('command', (payload) => {
       const user = users[socket.id]
       parseCommand({

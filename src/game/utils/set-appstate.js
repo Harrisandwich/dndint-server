@@ -1,7 +1,7 @@
 import { LOBBY, MENU, PLAYING } from '../constants/states'
 
 
-export default (state, io, props) => {
+export default (state, socket, io, props) => {
   let prompt = 'Main Menu: '
   switch (state) {
     case MENU:
@@ -16,7 +16,7 @@ export default (state, io, props) => {
     default:
       prompt = 'Main Menu: '
   }
-  io.emit('set-appstate', {
+  io.to(socket.id).emit('set-appstate', {
     prompt,
     state,
   })

@@ -3,7 +3,7 @@ import commands from '../commands'
 
 
 export default (props) => {
-  const { payload, user, io } = props
+  const { payload, user, socket, io } = props
   const category = commands[user.state][user.role]
   const command = category && category[payload.command]
     ? category[payload.command] : commands.general[payload.command]
@@ -13,8 +13,13 @@ export default (props) => {
     if (optionsValid.valid) {
       command(props)
     }
-    io.emit('error', { output: optionsValid.msg })
+    io.to(socket.id).emit('error', { output: optionsValid.msg })
   } else {
-    io.emit('error', { output: 'Invalid command. Use "/help" to see available commands' })
+    io
+      .to(socket.id)
+      .emit(
+        'error',
+        { output: 'Invalid command. Use "/help" to see available commands' },
+      )
   }
 }

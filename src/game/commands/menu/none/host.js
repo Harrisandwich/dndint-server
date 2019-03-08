@@ -12,7 +12,7 @@ const host = ({ payload, socket, io, user, rooms }) => {
 
   if (codeOption && rooms[roomCode]) {
     // error, chosen room code exists
-    io.emit('error', { output: 'This room already exists' })
+    io.to(socket.id).emit('error', { output: 'This room already exists' })
     return false
   }
   // no code option, generated code exists
@@ -30,8 +30,8 @@ const host = ({ payload, socket, io, user, rooms }) => {
       user.role = DM
       user.displayName = displayName
       resp.output = `You have successully created room ${roomCode}`
-      io.emit('command-response', resp)
-      setAppstate(LOBBY, io, {
+      io.to(socket.id).emit('command-response', resp)
+      setAppstate(LOBBY, socket, io, {
         displayName,
         roomCode,
       })
@@ -40,7 +40,7 @@ const host = ({ payload, socket, io, user, rooms }) => {
   }
 
 
-  io.emit('error', { output: 'Unable to connect' })
+  io.to(socket.id).emit('error', { output: 'Unable to connect' })
   return false
 }
 

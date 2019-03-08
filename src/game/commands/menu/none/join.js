@@ -13,8 +13,8 @@ const join = ({ payload, socket, io, user, rooms }) => {
       user.role = PLAYER
       user.displayName = displayName
       resp.output = `You have successully joined room ${roomCode}`
-      io.emit('command-response', resp)
-      setAppstate(LOBBY, io, {
+      io.to(socket.id).emit('command-response', resp)
+      setAppstate(LOBBY, socket, io, {
         displayName,
         roomCode,
       })
@@ -22,7 +22,9 @@ const join = ({ payload, socket, io, user, rooms }) => {
     })
     return true
   }
-  io.emit('error', { output: 'Join failed. Room does not exist. Use "/host" to host this room' })
+  io
+    .to(socket.id)
+    .emit('error', { output: 'Join failed. Room does not exist. Use "/host" to host this room' })
   return false
 }
 
